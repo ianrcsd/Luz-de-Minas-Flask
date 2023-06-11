@@ -5,7 +5,7 @@ export FLASK_DEBUG=1
 flask run
 '''
 import re
-import dependencies
+#import dependencies
 from flask import Flask, render_template, request,  redirect, url_for, session,flash
 from DB_Operations import get_data_menu, get_data_categoria, get_login, get_registro, post_registro, get_tables, get_fields, get_columns, get_menu_item, get_busca, update_row, get_row_data, get_table_data, insert_row, delete_row
 
