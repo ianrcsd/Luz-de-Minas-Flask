@@ -1,0 +1,45 @@
+{% extends 'adm/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+<p>Welcome back, {{ username }}!</p>
+
+<div class="container">
+      <h2>CRUD Dinâmico - {{table_name}}</h2>
+      <a href="{{ url_for('crud_insert', table_name=table_name) }}" class="btn btn-success">Inserir</a>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            {% for coluna in colunas %}
+              <th>{{ coluna }}</th>
+            {% endfor %}
+            <th colspan="2">Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in fields %}
+            <tr>
+              {% for coluna in colunas %}
+                <td>{{ row[coluna] }}</td>
+              {% endfor %}
+              <td>
+                <a  class="btn btn-primary" href="{{ url_for('crud_update', table_name=table_name,id=row['id']) }}" >Editar</a>
+                <a  class="btn btn-danger" href="{{ url_for('crud_delete', table_name=table_name,id=row['id'] ) }}" >Deletar</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+    </div>
+
+<!-- End Modal 2 -->
+{% endblock %}
+
+<!--
+   <a href="{{ url_for('edit', id=row[0]) }}" class="btn btn-primary">Entrar</a>
+                <a href="{{ url_for('edit', id=row[0]) }}" class="btn btn-primary">Editar</a>
+                <a href="{{ url_for('delete', id=row[0]) }}" class="btn btn-danger">Deletar</a>
+  <a href="{{ url_for('create') }}" class="btn btn-success">Criar</a> --> 

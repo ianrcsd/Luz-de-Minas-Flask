@@ -1,0 +1,32 @@
+{% extends 'adm/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+<p>Welcome back, {{ username }}!</p>
+
+<div class="container">
+      <h2>CRUD Dinâmico</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            {% for field in fields %}
+              <th>{{ field }}</th>
+            {% endfor %}
+            <th>Tabelas</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in tables %}
+            <tr>             
+                <td>{{ row }}</td>
+              <td>
+                <a href="{{ url_for('tableCrud', table_name=row) }}" class="btn btn-success">Entrar</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+{% endblock %}

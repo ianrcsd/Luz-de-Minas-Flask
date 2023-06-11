@@ -1,0 +1,24 @@
+{% extends 'adm/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+<p>Welcome back, {{ username }}!</p>
+
+<h1>Editar {{ table_name }}</h1>
+
+
+  <form method="POST" action="{{ url_for('crud_update', table_name=table_name, id=row_data.id) }}">
+    
+    <div class="form-group"> 
+    {%  for key, value in row_data.items() %} 
+      <label for="{{ key }}">{{ key }}</label>
+      <input type="text" class="form-control" id="{{ key }}" name="{{ key }}" value="{{ value }}">
+     
+    {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+  </form> 
+  
+{% endblock %}
